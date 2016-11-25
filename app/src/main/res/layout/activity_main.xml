@@ -15,10 +15,10 @@
         android:id="@+id/list_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/ll_botonera"/>
+        android:layout_above="@+id/ll_bottom_view"/>
 
     <LinearLayout
-        android:id="@+id/ll_botonera"
+        android:id="@+id/ll_bottom_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -29,13 +29,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:hint="Escribe nombre del asistente"/>
+            android:hint="@string/write_attender_name"/>
 
         <Button
-            android:id="@+id/btn_publish"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AÑADIR"/>
+            android:text="@string/add"/>
 
     </LinearLayout>
 </RelativeLayout>

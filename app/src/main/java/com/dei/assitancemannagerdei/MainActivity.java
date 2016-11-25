@@ -17,9 +17,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String PREF_LIST = "list";
     private ListView listItems;
     private EditText editName;
-    private Button btnPublish;
+    private Button btnAdd;
     private List<String> names;
     private ArrayAdapter<String> adapter;
 
@@ -30,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         listItems = (ListView) findViewById(R.id.list_items);
         editName = (EditText) findViewById(R.id.edit_name);
-        btnPublish = (Button) findViewById(R.id.btn_publish);
+        btnAdd = (Button) findViewById(R.id.btn_add);
 
-        btnPublish.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private void processName(String name) {
 
         if (name.isEmpty()) {
-            editName.setError("Pon un nombre");
+            editName.setError(getString(R.string.set_name));
             return;
         }
 
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs
                 = PreferenceManager.getDefaultSharedPreferences(this);
 
-        prefs.edit().putString("lista", todoJunto).commit();
+        prefs.edit().putString(PREF_LIST, todoJunto).commit();
 
     }
 
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs
                 = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String todoJunto = prefs.getString("lista", null);
+        String todoJunto = prefs.getString(PREF_LIST, null);
         if (todoJunto != null) {
             String[] namesArray = todoJunto.split(",");
 
@@ -110,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Action bar menu
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
