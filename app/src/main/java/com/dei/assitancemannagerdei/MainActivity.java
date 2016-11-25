@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, names);
         listItems.setAdapter(adapter);
 
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_dei);
 
     }
 
