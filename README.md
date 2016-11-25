@@ -8,6 +8,7 @@ It also stores in SharedPreferences the list when user quits the screen and rest
 
 These are [the slides](https://speakerdeck.com/jbc25/aplicaciones-moviles) of the presentation.
 
+You can download and test this APK. Just [click here](https://github.com/jbc25/DEI-attender-manager/blob/master/app-debug.apk) and install it in your phone ;)
 ¡Enjoy!
 
 
