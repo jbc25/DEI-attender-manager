@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnPublish;
     private List<String> names;
     private ArrayAdapter<String> adapter;
-    private Button btnClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         listItems = (ListView) findViewById(R.id.list_items);
         editName = (EditText) findViewById(R.id.edit_name);
         btnPublish = (Button) findViewById(R.id.btn_publish);
-        btnClear = (Button) findViewById(R.id.btn_clear);
 
         btnPublish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,18 +41,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                names.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
-
         names = new ArrayList<>();
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, names);
         listItems.setAdapter(adapter);
+
+
     }
 
     private void processName(String name) {
@@ -73,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+
+    // Save and restore data in correct life cycle methods onPause and onResume
 
     @Override
     protected void onPause() {
@@ -110,5 +106,29 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
 
+    }
+
+
+    // Action bar menu
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.menu_clear:
+                names.clear();
+                adapter.notifyDataSetChanged();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
